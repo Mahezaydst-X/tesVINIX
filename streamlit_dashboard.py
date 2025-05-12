@@ -37,7 +37,7 @@ def preprocess_data(df):
     return df
 
 # --- Streamlit Title ---
-st.title("📊 Dashboard UKT Fakultas Kedokteran")
+st.title("📊 Dashboard Klasifikasi Peminat dan Daya Tampung Fakultas Kedokteran")
 
 
 # Insight dan Tim
