@@ -10,7 +10,7 @@ import numpy as np
 # --- Load Dataset ---
 @st.cache_data
 def load_data():
-    file_path = 'UKT_Kedokteran - Sheet1.csv'  # Pastikan file berada di folder yang sama
+    file_path = 'UKT_Kedokteran.csv'  # Pastikan file berada di folder yang sama
     data = pd.read_csv(file_path)
     return data
 
