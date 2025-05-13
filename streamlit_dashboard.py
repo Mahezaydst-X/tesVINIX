@@ -10,7 +10,7 @@ import numpy as np
 # --- Load Dataset ---
 @st.cache_data
 def load_data():
-    file_path = 'UKT_Kedokteran.csv'  # Ensure the file is in the same folder
+    file_path = 'UKT_Kedokteran - Sheet1.csv'  # Ensure the file is in the same folder
     data = pd.read_csv(file_path)
     return data
 
@@ -408,3 +408,7 @@ if submit_button:
         
     else:
         st.error("Program studi yang Anda pilih tidak ditemukan.")
+        
+
+
+
