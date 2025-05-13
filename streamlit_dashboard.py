@@ -47,7 +47,7 @@ st.markdown("""
     <p style="font-size:16px;">Program studi dengan kuota besar dan peminat sedikit cenderung menawarkan peluang diterima yang lebih tinggi. Sementara itu, program studi dengan UKT rendah memberikan keuntungan bagi mahasiswa yang mencari biaya kuliah lebih terjangkau.</p>
     <hr style="border:1px dashed #ccc;">
     <p style="font-size:14px;"><strong>Disusun oleh Tim:</strong><br>
-    I Gusti Ngurah Bagus Lanang Purbhawa - Universitas Udayana<br>
+    I Gusti Ngurah Bagus Lanang Purbhawa (533) - Universitas Udayana<br>
     I Kadek Agus Candra Widnyana (534) - Universitas Udayana<br>
     I Kadek Angga Kusuma Diatmika (535)- Universitas Udayana<br>
     I Komang Maheza Yudistia (536) - Universitas Udayana
