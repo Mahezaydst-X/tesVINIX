@@ -97,10 +97,10 @@ fig3 = px.bar(
 st.plotly_chart(fig3)
 
 # --- Initial Overview: Metrics for Each Province ---
-st.header("📊 Data Overview per Province")
+st.header("📊 Data Overview per Provinsi")
 
 # 1. **Total Peminat per Province (Overall)**
-st.subheader("📈 Total Peminat per Province (Overall)")
+st.subheader("📈 Total Peminat per Provinsi (Overall)")
 fig1 = px.bar(
     df,
     x='Provinsi', y='Peminat SNBT',
@@ -111,22 +111,22 @@ fig1 = px.bar(
 st.plotly_chart(fig1)
 
 # 2. **Total Daya Tampung per Province (Overall)**
-st.subheader("📈 Total Daya Tampung per Province (Overall)")
+st.subheader("📈 Total Daya Tampung per Provinsi (Overall)")
 fig2 = px.bar(
     df,
     x='Provinsi', y='Daya Tampung SNBT',
-    title="Total Daya Tampung per Province (Overall)",
+    title="Total Daya Tampung per Provinsi (Overall)",
     labels={'Provinsi': 'Province', 'Daya Tampung SNBT': 'Jumlah Daya Tampung'},
     color='Daya Tampung SNBT', color_continuous_scale='Viridis'
 )
 st.plotly_chart(fig2)
 
 # 3. **UKT Terendah vs UKT Tertinggi per Province (Overall)**
-st.subheader("📈 Perbandingan UKT Terendah dan Tertinggi per Province (Overall)")
+st.subheader("📈 Perbandingan UKT Terendah dan Tertinggi per Provinsi (Overall)")
 fig3 = px.bar(
     df,
     x='Provinsi', y=['UKT Terendah', 'UKT Tertinggi'],
-    title="Perbandingan UKT Terendah dan Tertinggi per Province (Overall)",
+    title="Perbandingan UKT Terendah dan Tertinggi per Provinsi (Overall)",
     labels={'Provinsi': 'Province', 'value': 'Biaya (IDR)'},
     color='variable', barmode='group'
 )
@@ -134,7 +134,7 @@ st.plotly_chart(fig3)
 
 
 # --- Filter by Province ---
-st.header("🎛 Filter by Province")
+st.header("🎛 Filter by Provinsi")
 provinsi = st.selectbox("Pilih Provinsi:", df['Provinsi'].unique())
 
 # Filter data based on the selected province
@@ -408,7 +408,3 @@ if submit_button:
         
     else:
         st.error("Program studi yang Anda pilih tidak ditemukan.")
-        
-
-
-
