@@ -305,32 +305,38 @@ universitas_list = df[df['Provinsi'] == provinsi]['Universitas'].unique()
 universitas = st.selectbox("Pilih Universitas", universitas_list, key=f'universitas_selectbox_{hash("universitas")}')
 # Filter programs based on selected university
 program_studi_list = df[df['Universitas'] == universitas]['Program Studi'].unique()
-program_studi = st.selectbox("Pilih Program Studi", program_studi_list, key=f'program_studi_selectbox_{hash("program_studi")}')
+program_studi = st.selectbox("Pilih Program Studi", program_studi_list, key=f'program_studi_selectbox_{hash("program")}')
 
 # 2. **Filter by Daya Tampung Category**
-kategori_daya_tampung = st.selectbox("Pilih Kategori Daya Tampung", ['Kuota Besar', 'Kuota Kecil'], key=f'kategori_daya_tampung_selectbox_{hash("kategori_daya_tampung")}')
+kategori_daya_tampung = st.selectbox("Pilih Kategori Daya Tampung", ['Daya Tampung Besar', 'Daya Tampung Kecil'], key='kategori_daya_tampung')
 
 # --- Filter data based on the selected criteria ---
-if kategori_daya_tampung == 'Kuota Besar':
-    filtered_df = df[(df['Universitas'] == universitas) & 
-                     (df['Provinsi'] == provinsi) & 
-                     (df['Daya Tampung SNBT'] >= np.percentile(df['Daya Tampung SNBT'], 75))]  # Top 25% of intake capacity
+if kategori_daya_tampung == 'Daya Tampung Besar':
+    filtered_df = df[(df['Universitas'] == universitas) &
+                     (df['Provinsi'] == provinsi) &
+                     (df['Daya Tampung SNBT'] >= np.percentile(df['Daya Tampung SNBT'], 75))]  # Top 25%
 else:
-    filtered_df = df[(df['Universitas'] == universitas) & 
-                     (df['Provinsi'] == provinsi) & 
-                     (df['Daya Tampung SNBT'] < np.percentile(df['Daya Tampung SNBT'], 25))]  # Bottom 25% of intake capacity
+    filtered_df = df[(df['Universitas'] == universitas) &
+                     (df['Provinsi'] == provinsi) &
+                     (df['Daya Tampung SNBT'] < np.percentile(df['Daya Tampung SNBT'], 25))]  # Bottom 25%
 
-# --- Display Data Based on Selected Filters ---
+# --- Display Filtered Data ---
 if not filtered_df.empty:
-    st.success(f"✅ Menampilkan program studi di {universitas}, {provinsi} dengan kategori {kategori_daya_tampung} (Daya Tampung):")
+    st.success(f"✅ Menampilkan program studi di {universitas}, {provinsi} dengan kategori {kategori_daya_tampung}:")
     st.write(f"Terdapat {len(filtered_df)} program studi yang memenuhi kriteria.")
 
-    # Display the filtered data as a table
+    # Display the filtered data
     st.dataframe(filtered_df[['Program Studi', 'Daya Tampung SNBT', 'Peminat SNBT', 'UKT Terendah']])
 
+    # Visualisasi
+    st.subheader("📊 Visualisasi Data Program")
+    fig = px.bar(filtered_df, x='Program Studi', y=['Daya Tampung SNBT', 'Peminat SNBT', 'UKT Terendah'],
+                 title=f"Analisis Program Studi di {universitas}, {provinsi}",
+                 labels={'Program Studi': 'Program Studi', 'value': 'Jumlah'},
+                 color='Program Studi', barmode='group')
+    st.plotly_chart(fig)
 else:
     st.error("Tidak ada program studi yang memenuhi kriteria yang Anda pilih.")
-
 
 
 
